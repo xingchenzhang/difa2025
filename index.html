@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta property="og:title" content="DIFA: Deep Learning-based Image Fusion and Its Applications"/>
+  <meta property="og:url" content="https://difa2024.github.io"/>
+  <!-- <meta property="og:image" content="static/figures/teaser.jpg" /> -->
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <title>DIFA</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+  <link rel="icon" href="static/figures/elephant.jpeg">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    .author-block {
+      margin-right: 20px; /* Adjust this value to increase or decrease the spacing */
+    }
+
+    .school-block {
+      margin-right: 20px; /* Adjust this value to increase or decrease the spacing for schools */
+    }
+
+    .content ul {
+      list-style-type: none; /* Optional: Remove bullet points if desired */
+      padding-left: 0; /* Optional: Adjust padding */
+    }
+
+    .content li {
+      margin-bottom: 10px; /* Optional: Add space between list items */
+    }
+
+    .content.has-text-justified {
+      max-width: 1200px; /* Adjust the maximum width as needed */
+      margin: 0 auto; /* Center the content */
+    }
+
+    section {
+      font-size: 1.25rem; /* Adjust the font size as needed */
+    }
+
+    .section h2.title {
+      text-align: left; /* Left align the titles */
+    }
+
+    .content.has-text-left {
+      text-align: left; /* Left align the content */
+    }
+
+    .content.has-text-justify {
+      text-align: justify; /* Justify the content */
+    }
+
+    .container.is-fullwidth {
+      width: 100%; /* Ensure full width */
+      max-width: none; /* Override any max-width setting */
+      padding: 0 20px; /* Optional: Add some padding */
+    }
+
+    .content.has-text-left ul {
+      padding-left: 0; /* Remove padding from the unordered list */
+      margin-left: 0; /* Remove margin from the unordered list */
+    }
+
+    .content.has-text-left li {
+      padding-left: 0; /* Remove padding from the list items */
+      margin-left: 0; /* Remove margin from the list items */
+      list-style-position: inside; /* Optional: ensure list item marker is inside */
+    }
+
+    /* Adjust margin and padding to reduce space between sections */
+    .section {
+      margin-bottom: 1rem; /* Reduce bottom margin */
+      padding-top: 1rem; /* Reduce top padding */
+      padding-bottom: 1rem; /* Reduce bottom padding */
+    }
+
+    .download-btn {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #3273dc;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .download-btn:hover {
+      background-color: #2759a5;
+    }
+
+    .logos img {
+      max-height: 100px; /* Adjust the size of the logos */
+      margin: 10px; /* Add some space around the logos */
+    }
+
+    .logos {
+      text-align: center; /* Center the logos */
+    }
+
+    .navbar {
+      background-color: #3273dc; /* Set background color */
+      color: white; /* Set text color */
+    }
+
+    .navbar a.navbar-item {
+      color: white; /* Set link color */
+    }
+
+    .navbar a.navbar-item:hover {
+      background-color: #2759a5; /* Set hover background color */
+    }
+
+    .organiser {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .organiser img {
+      border-radius: 50%;
+      width: 150px;
+      height: 200px; /* Adjust height to make the image oval */
+      object-fit: cover; /* Ensure images are the same size and cropped to fit */
+      object-position: top; /* Move image down slightly */
+      margin-bottom: 1rem;
+    }
+
+    .organiser p {
+      margin: 0.5rem 0;
+    }
+
+    .organiser a {
+      text-decoration: none; /* Remove underline from links */
+      color: inherit; /* Inherit color */
+    }
+
+    .organiser a:hover {
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+    .keynote-speaker img {
+      border-radius: 50%;
+      width: 150px;
+      height: 200px; /* Adjust height to make the image oval */
+      object-fit: cover; /* Ensure images are the same size and cropped to fit */
+      object-position: top; /* Move image down slightly */
+      margin-bottom: 1rem;
+    }
+
+    .keynote-speaker p {
+      margin: 0.5rem 0;
+    }
+
+    .keynote-speaker a {
+      text-decoration: none; /* Remove underline from links */
+      color: inherit; /* Inherit color */
+    }
+
+    .keynote-speaker a:hover {
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+     /* Center align single speaker */
+     .keynote-speaker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .strikethrough {
+      text-decoration: line-through; /* Apply strikethrough effect */
+    }
+
+  </style>
+
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container is-fullwidth">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">DIFA Workshop</a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#introduction">Introduction</a>
+        <a class="navbar-item" href="#call-for-papers">Call for Papers</a>
+        <a class="navbar-item" href="#important-dates">Important Dates</a>
+        <a class="navbar-item" href="#paper-submission">Submission</a>
+        <a class="navbar-item" href="#accepted-papers">Accepted Papers</a> 
+        <a class="navbar-item" href="#program">Program</a>
+        <a class="navbar-item" href="#registration-attendance">Registration and Attendance</a>
+        <a class="navbar-item" href="#keynote-speakers">Keynote Speakers</a>
+        <a class="navbar-item" href="#organisers">Organisers</a>
+        <a class="navbar-item" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>  
+
+<!-- Title -->
+<section class="publication-header">
+  <div class="hero-body">
+    <div class="container is-fullwidth">
+      <div class="column has-text-centered">
+        <h1 class="title is-1 publication-title">BMVC2024 Workshop</h1>
+        <h1 class="title is-2 publication-title">DIFA: Deep Learning-based Image Fusion and Its Applications</h1>
+        <h1 class="title is-4 publication-title">27th November, 2024, Room M2, Scottish Event Campus, Glasgow, UK</h1>
+      </div>
+    </div>
+  </div>   
+</section>
+
+<!-- Organizers -->
+<section class="publication-author-block">
+  <div class="hero-body">
+    <div class="container is-fullwidth">
+      <div class="columns">
+        <div class="column has-text-centered">
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><a href="https://xingchenzhang.github.io/" target="_blank">Xingchen Zhang</a><sup>1</sup></span>
+            <span class="author-block"><a href="https://www.sheffield.ac.uk/cs/people/academic/zhixiang-chen" target="_blank">Zhixiang Chen</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://pure.qub.ac.uk/en/persons/shuyan-li" target="_blank">Shuyan Li</a><sup>3</sup></span>
+            <span class="author-block"><a href="https://profiles.imperial.ac.uk/y.demiris" target="_blank">Yiannis Demiris</a><sup>4</sup></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="school-block"><sup>1</sup>University of Exeter</span>
+            <span class="school-block"><sup>2</sup>University of Sheffield</span>
+            <span class="school-block"><sup>3</sup>Queen's University Belfast</span>
+            <span class="school-block"><sup>4</sup>Imperial College London</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Introduction -->
+<section id="introduction" class="section hero is-light">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justify">
+          <p>
+            Image fusion has been a subject of study for over 30 years. The field experienced a significant milestone in around 2017 with the introduction of deep learning techniques. Since then, deep learning-based image fusion has attracted significant attention, leading to substantial progress in algorithms, datasets, and benchmarks. Furthermore, image fusion has demonstrated its utility across a wide range of applications, including object tracking, object detection, medical image processing, robotics, autonomous driving, scene segmentation, pedestrian and cyclist detection, salient object detection, power facility inspection, surveillance, face recognition, crowd counting, vital sign measurement, motion estimation and crack detection in civil infrastructure. This workshop provides a opportunity to gather researchers from the image fusion community, allowing them to review the current technological trends in image fusion and its applications, as well as discuss its future developments. This workshop also provides an opportunity for researchers in other fields to find out how they can benefit from image fusion technologies.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call for papers -->
+<section id="call-for-papers" class="section hero">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Call for papers</h2>
+        <div class="content has-text-left">
+          <p>
+            The workshop will cover (but is not limited to) the following topics: 
+            <h5 class="title is-5">1. Different image fusion tasks</h5>
+            <ul>
+              <li>Visible and infrared image fusion, multi-focus image fusion, multi-exposure image fusion, medical image fusion, remote sensing image fusion, multimodal image fusion, general image fusion, and other types of image fusion.</li>
+            </ul>
+            <h5 class="title is-5">2. Deep learning methods for image fusion</h5>
+            <ul>
+              <li>CNN-based methods, GAN-based methods, autoencoder-based methods, transformer-based methods, diffusion model-based methods, application-driven image fusion methods, image registration methods for image fusion, etc.</li>
+            </ul>
+            <h5 class="title is-5">3. Dataset and performance evaluation</h5>
+            <ul>
+              <li>Image fusion datasets, image fusion evaluation metrics, image fusion evaluation methods, image fusion benchmarks</li>
+            </ul>
+            <h5 class="title is-5">4. Image fusion applications</h5>    		  
+            <ul>
+              <li>Object tracking, object detection, scene segmentation, robotics, etc.</li>
+            </ul>
+            <h5 class="title is-5">5. Fusion of images with other modalities</h5>    		  
+            <ul>
+              <li>Image + tactile data, image + Lidar data, etc.</li>
+            </ul>
+          </p> 
+          <a href="static/files/CFP-DIFA-BMVC2024.pdf" class="download-btn" download>Download CFP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Important dates -->
+<section id="important-dates" class="section hero">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Important dates</h2>
+        <div class="content has-text-left">
+          <ul>
+            <li class="strikethrough">Submission deadline: August 6th 2024, 23:59 (UK time)</li>
+            <li class="strikethrough">Submission deadline: August 14th 2024, 23:59 (UK time)</li>
+            <li class="strikethrough">Notification of acceptance: August 16th, 2024</li>
+            <li class="strikethrough">Notification of acceptance: August 24th, 2024</li>
+            <li class="strikethrough">Notification of acceptance: August 27th, 2024</li>
+            <li class="strikethrough">Camera-ready submission: September 16th, 2024</li>
+            <li>Camera-ready submission: September 26th, 2024</li>
+          </ul>
+        </div>   
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper submission -->
+<section id="paper-submission" class="section hero">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Paper submission</h2>
+        <div class="content has-text-left">
+          <ul>
+            <li> Papers can be submitted via <a href="https://openreview.net/group?id=bmva.org/BMVC/2024/Workshop/DIFA#tab-your-consoles" target="_blank">OpenReview</a>. Format must follow the requirement of <a href="https://bmvc2024.org/authors/author-guidelines/" target="_blank">BMVC2024 main conference</a>. The review process will be double-blind.</li> 
+          </ul>
+        </div>   
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Accepted Papers Section -->
+<section id="accepted-papers" class="section hero">
+  <div class="container is-fullwidth">
+    <h2 class="title is-3">Accepted Papers</h2>
+    <div class="content has-text-left">
+      <ul>
+        <li>
+          <strong>IRFusionFormer: Enhancing Pavement Crack Segmentation with RGB-T Fusion and Topological-Based Loss</strong> 
+          <br><em>Authors: Ruiqiang Xiao, Xiaohu Chen</em> <strong>(Best Paper Award)</strong>
+        </li>
+        <li>
+          <strong>Y-Net: Fusing fMRI and Natural Scenes to Generate Neuro-Interpretable Heat Maps</strong> 
+          <br><em>Authors: Subhrasankar Chatterjee, Shreyansh Vansh Verma, Debasis Samanta, Monalisa Sarma          </em>
+        </li>
+        <li>
+          <strong>GlowNet: A Lightweight Attention based Self-Guided Deep Neural Network for Low-Light Image Enhancement</strong> 
+          <br><em>Authors: Abhiroop Chatterjee, Susmita Ghosh, Ashish Ghosh</em>
+        </li>
+        <li>
+          <strong>FourierDiff: Image Denoising Using Improved Denoising Diffusion Probabilistic Models via Fast Fourier Convolution</strong> 
+          <br><em>Authors: Ao chen, Mengyuan Liu, Runyu Yao, Minhao Wu, Pengfei Fan</em>
+        </li>
+      </ul>
+      <p><strong>All the accepted papers can be downloaded using <a href="https://gla-my.sharepoint.com/personal/gerardo_aragoncamarasa_glasgow_ac_uk/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Fgerardo%5Faragoncamarasa%5Fglasgow%5Fac%5Fuk%2FDocuments%2FAttachments%2FBMVC2024%2FWorkshops%2FDIFA" target="_blank" style="color: blue; text-decoration: underline;">this link</a>.</strong></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Tentative Program -->
+<section id="program" class="section hero">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Program</h2>
+        <div class="content has-text-left">
+          <ul>
+            <li>14:00 - 14:10 Opening Remarks</li>
+            <li>14:10 - 14:50 Keynote talk: <strong>Prof. Bartek Papiez</strong> (Beyond Beautiful Images: AI and Multimodal Data in Healthcare)            </li>
+            <li>14:50 - 15:30 Keynote talk: <strong>Prof. Hui Wang</strong> (Multimodal Video Retrieval: MVSE and Beyond with Advanced Fusion Technologies)            </li>
+            <li>15:30 - 15:40 Break</li>
+            <li>15:40 - 16:00 Oral presentation: FourierDiff: Image Denoising Using Improved Denoising Diffusion Probabilistic Models via Fast Fourier Convolution</li>
+            <li>16:00 - 16:20 Oral presentation: Y-Net: Fusing fMRI and Natural Scenes to Generate Neuro-Interpretable Heat Maps</li>
+            <li>16:20 - 16:40 Oral presentation: IRFusionFormer: Enhancing Pavement Crack Segmentation with RGB-T Fusion and Topological-Based Loss</li>
+            <li>16:40 - 17:00 Oral presentation: GlowNet: A Lightweight Attention based Self-Guided Deep Neural Network for Low-Light Image Enhancement</li>
+            <li>17:00 - 17:10 Break</li>
+            <li>17:10 - 17:15 Best paper award announcement</li>
+            <li>17:15 - 17:20 Closing Remarks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Registration and Attendance Section -->
+<section id="registration-attendance" class="section hero">
+  <div class="container is-fullwidth">
+    <h2 class="title is-3">Registration and Attendance</h2>
+    <div class="content has-text-left">
+      <h4 class="title is-4">Registration</h4>
+      <p>
+        Please complete your registration on the BMVC2024 website:
+<a href="https://bmva.charitysuite.com/events/zz5rrcqk" target="_blank">https://bmva.charitysuite.com/events/zz5rrcqk</a>. You can choose whole BMVC conference registration (Early bird registration is £550, ends in 30th September), or One-day Workshop only Registration (£100).
+      </p>
+
+      <h4 class="title is-4">Attendance</h4>
+      <p>
+        Our workshop will be run in hybrid mode. After you complete your registration, please send us an email with proof of registration. We will send you the online link before the workshop.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- New section for Keynote Speakers -->
+<section id="keynote-speakers" class="section hero is-light">
+  <div class="container is-fullwidth">
+    <h2 class="title is-3">Keynote Speakers</h2>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter keynote-speaker">
+        <img src="static/figures/Bartek.jpeg" alt="Bartek Papiez">
+        <p><strong><a href="https://www.bdi.ox.ac.uk/Team/bartek-papiez" target="_blank">Bartek Papiez</a></strong></p>
+        <p>Associate Professor</p>
+        <p>University of Oxford</p>
+      </div>
+      <div class="column is-one-quarter keynote-speaker">
+        <img src="static/figures/Hui.jpg" alt="Hui Wang">
+        <p><strong><a href="https://pure.qub.ac.uk/en/persons/h-wang" target="_blank">Hui Wang</a></strong></p>
+        <p>Professor</p>
+        <p>Queen's University Belfast</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New section for Organisers -->
+<section id="organisers" class="section hero is-light">
+  <div class="container is-fullwidth">
+    <h2 class="title is-3">Organisers</h2>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter organiser">
+        <img src="static/figures/Xingchen.jpg" alt="Xingchen Zhang">
+        <p><strong><a href="https://xingchenzhang.github.io/" target="_blank">Xingchen Zhang</a></strong></p>
+        <p>Senior Lecturer</p>
+        <p>University of Exeter</p>
+      </div>
+      <div class="column is-one-quarter organiser">
+        <img src="static/figures/Zhixiang.jpg" alt="Zhixiang Chen">
+        <p><strong><a href="https://www.sheffield.ac.uk/cs/people/academic/zhixiang-chen" target="_blank">Zhixiang Chen</a></strong></p>
+        <p>Lecturer</p>
+        <p>University of Sheffield</p>
+      </div>
+      <div class="column is-one-quarter organiser">
+        <img src="static/figures/Shuyan.jpg" alt="Shuyan Li">
+        <p><strong><a href="https://pure.qub.ac.uk/en/persons/shuyan-li" target="_blank">Shuyan Li</a></strong></p>
+        <p>Lecturer</p>
+        <p>Queen's University Belfast</p>
+      </div>
+      <div class="column is-one-quarter organiser">
+        <img src="static/figures/Yiannis.jpg" alt="Yiannis Demiris">
+        <p><strong><a href="https://profiles.imperial.ac.uk/y.demiris" target="_blank">Yiannis Demiris</a></strong></p>
+        <p>Professor</p>
+        <p>Imperial College London</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section hero">
+  <div class="container is-fullwidth">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title is-3">Contact</h2>
+        <div class="content has-text-left">
+          <ul>
+            <li>To contact the organizers please use x.zhang12@exeter.ac.uk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New section for logos -->
+<section class="section hero is-light">
+  <div class="container is-fullwidth logos">
+    <img src="static/figures/Exeter.png" alt="University of Exeter Logo">
+    <img src="static/figures/Sheffield.png" alt="University of Sheffield Logo">
+    <img src="static/figures/QUB.png" alt="Queen's University Belfast Logo">
+    <img src="static/figures/Imperial.png" alt="Imperial College London Logo">
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+        <p>
+          Website source code based on the <a href="https://all-things-vits.github.io/atv//"> All Things ViTs</a> tutorial page. If you want to reuse their <a
+          href="https://github.com/all-things-vits/atv">source code</a>, please credit them appropriately.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  var sc_project=12351448; 
+  var sc_invisible=1; 
+  var sc_security="c676de4f"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+  href="https://statcounter.com/" target="_blank"><img
+  class="statcounter"
+  src="https://c.statcounter.com/12351448/0/c676de4f/1/"
+  alt="Web Analytics"></a></div></noscript>
+  <!-- End of Statcounter Code -->
+
+</body>
+</html>
